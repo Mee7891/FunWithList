@@ -57,6 +57,47 @@ namespace FunWithList
             afterMe.Next = afterMe.Next.Next;
         }
 
+        public bool HasCircle(bool tear)
+        {
+            //Проверка наличия цикла в односвязном списке
+            //методом кролика и черепахи
+            Sell<T> rabbit = sentinel.Next;
+            Sell<T> turtle = sentinel.Next;
+
+            bool firstMeet = false;
+
+            while(rabbit != null)
+            {
+                turtle = turtle.Next; //черепаха делает 1 шаг
+
+                if (!firstMeet)                   //а кролик 1 или 2, в зав. от встретился с черепахой или нет
+                    rabbit = rabbit.Next.Next;
+                else 
+                    rabbit = rabbit.Next;
+
+                if (turtle == rabbit)
+                {
+                    if (!tear) return true; //мы нашли цикл, если его не надо рвать, то выходим
+
+                    if (!firstMeet)
+                    {
+                        firstMeet = true;
+                        rabbit = sentinel.Next;  //первая встреча, запускаем кролика из начала списка
+                    }
+                    else break;                 //вторая встреча, выходим из while
+                }
+            }
+                  
+            if(rabbit == null ) return false; //нету значит цикла
+
+            //если мы сюда добрались, то цикл есть, его надо рвать, и кролик стоит в начале цикла
+            //гоним черепаху к кролику
+            while (turtle.Next != rabbit)
+                turtle = turtle.Next;
+            turtle.Next = null;       //рвем цикл
+            return true;
+        }
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             Sell<T> current = sentinel.Next;
