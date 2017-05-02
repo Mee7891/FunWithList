@@ -61,18 +61,19 @@ namespace FunWithList
         {
             //Проверка наличия цикла в односвязном списке
             //методом кролика и черепахи
+            if (sentinel.Next == null) return false;
             Sell<T> rabbit = sentinel.Next;
-            Sell<T> turtle = sentinel.Next;
+            Sell<T> turtle = rabbit;
 
             bool firstMeet = false;
 
-            while(rabbit != null)
+            while(rabbit.Next != null )
             {
                 turtle = turtle.Next; //черепаха делает 1 шаг
 
-                if (!firstMeet)                   //а кролик 1 или 2, в зав. от встретился с черепахой или нет
+                if (!firstMeet)  //а кролик 1 или 2, в зав. от встретился с черепахой или нет
                     rabbit = rabbit.Next.Next;
-                else 
+                else
                     rabbit = rabbit.Next;
 
                 if (turtle == rabbit)
@@ -88,7 +89,7 @@ namespace FunWithList
                 }
             }
                   
-            if(rabbit == null ) return false; //нету значит цикла
+            if(rabbit.Next == null ) return false; //нету значит цикла
 
             //если мы сюда добрались, то цикл есть, его надо рвать, и кролик стоит в начале цикла
             //гоним черепаху к кролику
