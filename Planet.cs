@@ -17,6 +17,8 @@ namespace FunWithList
         public Planet nextRadiusPl   { get; set; }
         public Planet nextDistancePl { get; set; }
 
+        public PlanetSystem plSystem { get; private set; }
+
         public Planet(string name, double mass, double radius, double distance)
         {
             Name = name; Mass = mass; Radius = radius; Distance = distance;
@@ -24,8 +26,12 @@ namespace FunWithList
 
         public override string ToString()
         {
-            return string.Format("Planet {0} has m = {1} kg and r = {2} km and is located in {} km from the system centre",
-                                    Name, Mass, Radius, Distance);
+            if(plSystem != null)
+                return string.Format("Planet {0} has m = {1} kg and r = {2} km and is located in {3} km from {4}",
+                                    Name, Mass, Radius, Distance, plSystem.StarName);
+
+            return string.Format("Planet {0} has m = {1} kg and r = {2} km. System unknown",
+                                    Name, Mass, Radius);
         }
     }
 }
