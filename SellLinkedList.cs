@@ -11,10 +11,13 @@ namespace FunWithList
     {
         protected Sell<T> sentinel;
 
+        protected     int count;
+
         public SellLinkedList(T sentinelValue)
         {
             sentinel = new Sell<T>(sentinelValue);
             sentinel.Next = null;
+            count = 0;
         }
 
         public void AddAtBeginning(T value)
@@ -22,6 +25,7 @@ namespace FunWithList
             Sell<T> newSell = new Sell<T>(value);
             newSell.Next = sentinel.Next;
             sentinel.Next = newSell;
+            count++;
         }
 
         public void AddAtEnd(T value)
@@ -33,6 +37,7 @@ namespace FunWithList
                 current = current.Next;
             current.Next = newSell;
             newSell.Next = null;
+            count++;
         }
 
         public Sell<T> FindSellBefore(T value)
@@ -50,18 +55,25 @@ namespace FunWithList
         {
             newSell.Next = afterMe.Next;
             afterMe.Next = newSell;
+            count++;
         }
 
         protected void DeleteAfter(Sell<T> afterMe)
         {
-            afterMe.Next = afterMe.Next.Next;
+            if (afterMe.Next != null)
+            {
+                afterMe.Next = afterMe.Next.Next;
+                count--;
+            }
+            
         }
 
         public bool HasCircle(bool tear)
         {
             //Проверка наличия цикла в односвязном списке
             //методом кролика и черепахи
-            if (sentinel.Next == null) return false;
+            //if (sentinel.Next == null) return false;
+            if (count == 0) return false;
             Sell<T> rabbit = sentinel.Next;
             Sell<T> turtle = rabbit;
 
