@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FunWithList
 {
-    class PlanetSystem
+    class PlanetSystem: IEnumerable<Planet>
     {
         public string StarName { get; private set; }
 
@@ -21,7 +22,17 @@ namespace FunWithList
         public void AddPlanet(Planet newPlanet)
         {
             planets.Add(newPlanet);
+        }
 
+
+        IEnumerator<Planet> IEnumerable<Planet>.GetEnumerator()
+        {
+            return ((IEnumerable<Planet>)planets).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<Planet>)this).GetEnumerator();
         }
     }
 }

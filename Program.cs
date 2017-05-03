@@ -10,6 +10,13 @@ namespace FunWithList
     {
         static void Main(string[] args)
         {
+            //circledListTest();
+
+            Console.ReadKey();
+        }
+
+        static void circledListTest()
+        {
             SellLinkedList<string> sList1 = new SellLinkedList<string>("~");
             sList1.AddAtEnd("No");
             sList1.AddAtEnd("circle");
@@ -17,7 +24,7 @@ namespace FunWithList
             sList1.AddAtEnd("this");
             sList1.AddAtEnd("list");
 
-            foreach(string str in sList1)
+            foreach (string str in sList1)
                 Console.WriteLine(str);
 
             Console.WriteLine("\nAnd rabbit with turtle say: {0}", sList1.HasCircle(false));
@@ -47,8 +54,6 @@ namespace FunWithList
                 Console.WriteLine("\nAnd rabbit with turtle say: {0}", sList2.HasCircle(true));
 
             Console.WriteLine("\nAnd after doing their job they say: {0}", sList2.HasCircle(true));
-
-            Console.ReadKey();
         }
     }
 }
