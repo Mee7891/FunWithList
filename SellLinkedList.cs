@@ -10,7 +10,6 @@ namespace FunWithList
     class SellLinkedList<T>: IEnumerable<T>
     {
         protected Sell<T> sentinel;
-
         protected     int count;
 
         public SellLinkedList(T sentinelValue)
@@ -30,6 +29,7 @@ namespace FunWithList
 
         public void AddAtEnd(T value)
         {
+            //работает, если нет цикла
             Sell<T> newSell = new Sell<T>(value);
 
             Sell<T> current = sentinel;
