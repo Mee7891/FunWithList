@@ -17,5 +17,11 @@ namespace FunWithList
             StarName = starName;
             planets = new List<Planet>();
         }
+
+        public void AddPlanet(Planet newPlanet)
+        {
+            planets.Add(newPlanet);
+
+        }
     }
 }
