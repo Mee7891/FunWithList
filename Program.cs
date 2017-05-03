@@ -12,6 +12,20 @@ namespace FunWithList
         {
             //circledListTest();
 
+            PlanetSystem sunSystem = new PlanetSystem("Sun");
+
+            sunSystem.AddPlanet(new Planet("Mercury", 3.3e23, 2439.7, 57.91e6));
+            sunSystem.AddPlanet(new Planet("Venus", 4.87e24, 6051.8, 108e6));
+            sunSystem.AddPlanet(new Planet("Earth", 5.9726e24, 6371, 150e6));
+            sunSystem.AddPlanet(new Planet("Mars", 6.423e23, 3389.5, 228e6));
+            sunSystem.AddPlanet(new Planet("Jupiter", 1.8986e27, 71400, 778.57e6));
+            sunSystem.AddPlanet(new Planet("Saturn", 5.6846e26, 60268, 1430e6));
+            sunSystem.AddPlanet(new Planet("Uranus", 8.6832e25, 25559, 2.8e9));
+            sunSystem.AddPlanet(new Planet("Neptune", 1.0243e26, 24764, 4.55e9));
+
+            foreach(Planet pl in sunSystem)
+                Console.WriteLine(pl.ToString());
+
             Console.ReadKey();
         }
 

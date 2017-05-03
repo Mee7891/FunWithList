@@ -22,6 +22,7 @@ namespace FunWithList
         public void AddPlanet(Planet newPlanet)
         {
             planets.Add(newPlanet);
+            newPlanet.plSystem = this;
         }
 
 

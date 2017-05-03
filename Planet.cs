@@ -17,7 +17,7 @@ namespace FunWithList
         public Planet nextRadiusPl   { get; set; }
         public Planet nextDistancePl { get; set; }
 
-        public PlanetSystem plSystem { get; private set; }
+        public PlanetSystem plSystem { get; set; }
 
         public Planet(string name, double mass, double radius, double distance)
         {
