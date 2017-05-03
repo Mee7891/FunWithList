@@ -23,8 +23,24 @@ namespace FunWithList
             sunSystem.AddPlanet(new Planet("Uranus", 8.6832e25, 25559, 2.8e9));
             sunSystem.AddPlanet(new Planet("Neptune", 1.0243e26, 24764, 4.55e9));
 
-            foreach(Planet pl in sunSystem)
-                Console.WriteLine(pl.ToString());
+
+            sunSystem.SortByMass();
+            Console.WriteLine("By mass:");
+            foreach (Planet pl in sunSystem)
+                Console.WriteLine(pl.Name);
+            Console.WriteLine("-----------------------------------\n");
+
+            sunSystem.SortByRadius();
+            Console.WriteLine("By radius:");
+            foreach (Planet pl in sunSystem)
+                Console.WriteLine(pl.Name);
+            Console.WriteLine("-----------------------------------\n");
+
+            sunSystem.SortByDistance();
+            Console.WriteLine("By distance:");
+            foreach (Planet pl in sunSystem)
+                Console.WriteLine(pl.Name);
+            Console.WriteLine("-----------------------------------\n");
 
             Console.ReadKey();
         }
