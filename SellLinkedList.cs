@@ -111,6 +111,27 @@ namespace FunWithList
             return true;
         }
 
+        public int MakeCircle(int index)
+        {
+            //делает цикл, index - начало цикла
+            if (count < 1)     return -1;
+            if (index > count) return -1;
+
+            Sell<T> circleStart = sentinel;
+            Sell<T> current = sentinel;
+            int n = 0;
+            while (current.Next != null)
+            {
+                current = current.Next;
+                if (n == index) circleStart = current;
+                n++;
+            }
+
+            current.Next = circleStart;
+
+            return 1;
+        }
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             Sell<T> current = sentinel.Next;
